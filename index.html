@@ -12,7 +12,6 @@
             --text: #334155;
             --bg: #f8fafc;
             --whatsapp: #25D366;
-            --secondary-btn: #334155;
         }
 
         body { 
@@ -22,6 +21,7 @@
             color: var(--text); 
         }
         
+        /* Navigation */
         nav { 
             background: var(--primary); 
             color: white; 
@@ -34,7 +34,7 @@
             z-index: 1000;
         }
 
-        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
 
         .search-container input {
             padding: 8px 15px; 
@@ -48,29 +48,26 @@
         }
         .search-container input:focus { width: 220px; border-color: var(--accent); }
 
-        .cv-link, .data-link { 
+        .nav-links { position: relative; display: flex; align-items: center; }
+        .nav-links button, .nav-links a { 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
             padding: 8px 16px; 
             border-radius: 6px; 
+            cursor: pointer; 
             text-decoration: none; 
             font-weight: 600; 
             font-size: 0.85rem; 
-            transition: 0.3s;
-            white-space: nowrap;
+            margin-left: 10px;
         }
 
-        .cv-link { background: var(--accent); color: white; }
-        .data-link { background: var(--secondary-btn); color: white; }
-
-        .cv-link:hover, .data-link:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
+        /* Layout */
         .main-wrapper {
             display: grid;
             grid-template-columns: 280px 1fr; 
-            max-width: 1300px; 
-            margin: 40px auto 40px 8%; 
+            max-width: 1400px; 
+            margin: 40px 5% 40px 5%; 
             gap: 30px;
             padding: 0 20px;
         }
@@ -101,6 +98,7 @@
             margin-bottom: 5px; 
         }
 
+        /* Reports area */
         .reports-area h2 { 
             margin-top: 0; 
             font-size: 1.4rem; 
@@ -116,6 +114,7 @@
             margin-bottom: 12px; 
             border-radius: 8px; 
             overflow: hidden; 
+            width: 100%;
         }
         
         .accordion-header { 
@@ -126,15 +125,43 @@
             border: none; 
             cursor: pointer; 
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 20px;
+            /* Flex column for text, auto for status, fixed for arrow */
+            grid-template-columns: 1fr auto 20px; 
             align-items: center; 
-            gap: 15px; 
+            gap: 20px; 
             color: var(--primary);
         }
 
-        .header-title { font-weight: 700; font-size: 1rem; }
-        .header-date { font-size: 0.8rem; color: #64748b; }
-        .header-status { font-size: 0.8rem; font-weight: 600; text-align: right; }
+        .header-main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            /* Force alignment to the start (left) */
+            align-items: flex-start; 
+            justify-content: center;
+        }
+
+        .header-title { 
+            font-weight: 700; 
+            font-size: 1.05rem; 
+            line-height: 1.2;
+            margin: 0;
+        }
+        
+        .header-dates-row {
+            font-size: 0.75rem; 
+            color: #64748b; 
+            display: flex;
+            gap: 15px;
+            /* Ensure no inherited padding/margin pushes it left */
+            padding: 0;
+            margin: 0;
+        }
+
+        .header-dates-row span { font-weight: 400; white-space: nowrap; }
+        .header-dates-row b { color: #475569; font-weight: 600; }
+        
+        .header-status { font-size: 0.85rem; font-weight: 700; text-align: right; min-width: 90px; }
         .arrow { font-size: 0.7rem; text-align: right; color: #94a3b8; transition: 0.3s; }
 
         .accordion-content { 
@@ -148,7 +175,7 @@
 
         .analysis-chart {
             width: 100%;
-            max-width: 650px;
+            max-width: 600px;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
             margin: 15px 0;
@@ -157,6 +184,21 @@
 
         .status-ongoing { color: #b05d00; }
         .status-hit { color: #10b981; }
+
+        #contactDropdown {
+            display: none; 
+            position: absolute; 
+            top: 50px; 
+            right: 0;
+            width: 260px; 
+            background: white; 
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-radius: 8px; 
+            padding: 20px; 
+            z-index: 2000; 
+            color: #333;
+        }
 
         footer {
             background: white; 
@@ -167,7 +209,7 @@
             font-size: 0.85rem;
         }
 
-        .contact-links {
+        footer .contact-links {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -190,37 +232,42 @@
         @media (max-width: 950px) {
             .main-wrapper { grid-template-columns: 1fr; margin: 20px auto; width: 90%; }
             .intro-section { position: relative; top: 0; }
-            .accordion-header { grid-template-columns: 1fr 1fr; gap: 5px; }
-            .header-status { text-align: left; }
-            .nav-right { flex-wrap: wrap; justify-content: flex-end; }
+            .header-dates-row { flex-direction: column; gap: 2px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-weight: 700; letter-spacing: 1px;">RGinsight</div>
+        <div style="font-weight: 700;">RGinsight</div>
         <div class="nav-right">
             <div class="search-container">
-                <input type="text" id="stockSearch" placeholder="Search report..." onkeyup="filterReports()">
+                <input type="text" id="stockSearch" placeholder="Search reports..." onkeyup="filterReports()">
             </div>
-            
-            <a href="https://github.com/riangiri" target="_blank" class="data-link">Data Portfolio</a>
-            
-            <a href="rriangirianom-updated-cv-td.pdf" target="_blank" class="cv-link">Download My CV</a>
+            <div class="nav-links">
+                <button onclick="toggleContact()">Contact</button>
+                <a href="cv.pdf" target="_blank">Download my CV</a>
+                
+                <div id="contactDropdown">
+                    <h4 style="margin:0 0 10px 0">Direct Message</h4>
+                    <form>
+                        <input type="text" placeholder="Name" style="width:100%; padding:8px; margin-bottom:8px; border:1px solid #ddd; border-radius:4px;">
+                        <textarea rows="3" placeholder="Message" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px;"></textarea>
+                        <button type="button" onclick="toggleContact()" style="width:100%; background:var(--primary); color:white; border:none; padding:8px; margin-top:10px; border-radius:4px; cursor:pointer;">Send</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="main-wrapper">
         <aside class="intro-section">
-            <h2>About Me</h2>
-            <p> I'm Raden Rian Girianom
-As an Independent Market Analyst since 2017 specialize in technical analysis insights across the Indonesia Stock Exchange (IDX), US Equities, Global Indices and Cryptocurrencies.</p>
+            <h2>Welcome, I'm XXXX</h2>
+            <p>I share my Insight reports and technical analysis for Indonesia stock markets, Equities, Index and Cryptocurrency.</p>
             <div class="skill-tags">
-                <span class="tag">IDX & US Equities</span>
+                <span class="tag">XCXCX</span>
                 <span class="tag">Pattern</span>
-                <span class="tag">Technical Analysis</span>
-                <span class="tag">Wyckoff Analysis</span>
+                <span class="tag">XXXXCCCZZZ</span>
                 <span class="tag">Charting</span>
             </div>
         </aside>
@@ -231,10 +278,10 @@ As an Independent Market Analyst since 2017 specialize in technical analysis ins
             <div class="accordion-item stock-card">
                 <button class="accordion-header">
                     <div class="header-main-info">
-                        <span class="header-title">Technical View: IDX-SALIM IVOMAS PRATAMA (IDX-SIMP) (TESTER ONLY Soon)</span>
+                        <span class="header-title">Stock Analysis: AAPL (Example)</span>
                         <div class="header-dates-row">
-                            <span>Release Date: <b>13 April 2026</b></span>
-                            <span>Last Update: <b>-</b></span>
+                            <span>Release Date: <b>12 April 2026</b></span>
+                            <span>Last Update: <b>—</b></span>
                         </div>
                     </div>
                     <span class="header-status status-ongoing">Ongoing</span>
@@ -242,9 +289,9 @@ As an Independent Market Analyst since 2017 specialize in technical analysis ins
                 </button>
                 <div class="accordion-content">
                     <div class="content-inner">
-                        <strong>Analysis:</strong>
-                        <p>Tester.</p>
-                        <img src="https://via.placeholder.com/650x350/e2e8f0/475569?text=Insert+AAPL+Chart" alt="AAPL Chart" class="analysis-chart">
+                        <strong>Technical Summary:</strong>
+                        <p>Observing a bullish flag pattern. The stock is holding firm above the 50-day EMA.</p>
+                        <img src="https://via.placeholder.com/600x300/e2e8f0/475569?text=Stock+Chart+Example+1" alt="Technical Chart" class="analysis-chart">
                         <p>Key resistance level at $195. If volume confirms the break, target is $210.</p>
                     </div>
                 </div>
@@ -253,20 +300,20 @@ As an Independent Market Analyst since 2017 specialize in technical analysis ins
             <div class="accordion-item stock-card">
                 <button class="accordion-header">
                     <div class="header-main-info">
-                        <span class="header-title">Technical View: Candra Daya Investasi (IDX-CDIA) (TESTER Soon) </span>
+                        <span class="header-title">Stock Analysis: TSLA (Example)</span>
                         <div class="header-dates-row">
-                            <span class="header-date">5 April 2026</span>
-                            <span>Last Update: <b>-</b></span>
-                        </div>  
+                            <span>Release Date: <b>5 April 2026</b></span>
+                            <span>Last Update: <b>8 April 2026</b></span>
+                        </div>
                     </div>
-                    <span class="header-status status-hit">-</span>
+                    <span class="header-status status-hit">Hit Target</span>
                     <span class="arrow">▼</span>
                 </button>
                 <div class="accordion-content">
                     <div class="content-inner">
-                        <strong>Analysis:</strong>
-                        <p>Target achieved at $210. Successful 12% move captured within 10 days of analysis.</p>
-                        <img src="https://via.placeholder.com/650x350/e2e8f0/475569?text=Insert+TSLA+Chart" alt="TSLA Chart" class="analysis-chart">
+                        <strong>Technical Summary:</strong>
+                        <p>Double bottom confirmed. Exit strategy was executed at the primary resistance zone.</p>
+                        <img src="https://via.placeholder.com/600x300/e2e8f0/475569?text=Stock+Chart+Example+2" alt="Technical Chart" class="analysis-chart">
                         <p>Final Gain: +15%. Currently waiting for a new entry signal on the retracement.</p>
                     </div>
                 </div>
@@ -276,15 +323,17 @@ As an Independent Market Analyst since 2017 specialize in technical analysis ins
 
     <footer>
         <div class="contact-links">
-            <a href="mailto:Riangirianom@gmail.com">📧 Riangirianom@gmail.com</a>
-            <a href="https://wa.me/628125051677" target="_blank" style="color: var(--whatsapp);">
+            <a href="mailto:XXXX.com">📧 XXXX.com</a>
+            
+            <a href="https://wa.me/123456789" target="_blank" style="color: var(--whatsapp);">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" style="width: 16px;">
-                Contact Me
+                Whatsapp
             </a>
-            <a href="https://www.linkedin.com/in/rian-girianom/" target="_blank">🔗 LinkedIn</a>
+
+            <a href="https://www.linkedin.com/in/XXXXXX/" target="_blank">🔗 LinkedIn</a>
             <span>📍 Indonesia</span>
         </div>
-        <div style="opacity: 0.6;">&copy; 2026 RGInsight Portfolio</div>
+        <div style="opacity: 0.6;">&copy; 2026 Rianinsight Portfolio</div>
     </footer>
 
     <script>
@@ -311,7 +360,17 @@ As an Independent Market Analyst since 2017 specialize in technical analysis ins
                 }
             });
         }
+
+        function toggleContact() {
+            const dropdown = document.getElementById("contactDropdown");
+            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('button') && !event.target.closest('#contactDropdown') && !event.target.matches('#stockSearch')) {
+                document.getElementById("contactDropdown").style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
-
