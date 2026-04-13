@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analyst Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div style="font-weight: 700;">RGinsight</div>
+        <div class="nav-right">
+            <div class="search-container">
+                <input type="text" id="stockSearch" placeholder="Search reports..." onkeyup="filterReports()">
+            </div>
+            <div class="nav-links">
+                <button onclick="toggleContact()">Contact</button>
+                <a href="cv.pdf" target="_blank">Download my CV</a>
+                
+                <div id="contactDropdown">
+                    <h4 style="margin:0 0 10px 0">Direct Message</h4>
+                    <form>
+                        <input type="text" placeholder="Name" style="width:100%; padding:8px; margin-bottom:8px; border:1px solid #ddd; border-radius:4px;">
+                        <textarea rows="3" placeholder="Message" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px;"></textarea>
+                        <button type="button" onclick="toggleContact()" style="width:100%; background:var(--primary); color:white; border:none; padding:8px; margin-top:10px; border-radius:4px; cursor:pointer;">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <aside class="intro-section">
+            <h2>Welcome, I'm XXXX</h2>
+            <p>I share my Insight reports and technical analysis for Indonesia stock markets, Equities, Index and Cryptocurrency.</p>
+            <div class="skill-tags">
+                <span class="tag">XCXCX</span>
+                <span class="tag">Pattern</span>
+                <span class="tag">XXXXCCCZZZ</span>
+                <span class="tag">Charting</span>
+            </div>
+        </aside>
+
+        <main class="reports-area" id="reportContainer">
+            <h2>Latest Reports</h2>
+
+            <div class="accordion-item stock-card">
+                <button class="accordion-header">
+                    <div class="header-main-info">
+                        <span class="header-title">Stock Analysis: AAPL (Example)</span>
+                        <div class="header-dates-row">
+                            <span>Release Date: <b>12 April 2026</b></span>
+                            <span>Last Update: <b>—</b></span>
+                        </div>
+                    </div>
+                    <span class="header-status status-ongoing">Ongoing</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <strong>Technical Summary:</strong>
+                        <p>Observing a bullish flag pattern. The stock is holding firm above the 50-day EMA.</p>
+                        <img src="https://via.placeholder.com/600x300/e2e8f0/475569?text=Stock+Chart+Example+1" alt="Technical Chart" class="analysis-chart">
+                        <p>Key resistance level at $195. If volume confirms the break, target is $210.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item stock-card">
+                <button class="accordion-header">
+                    <div class="header-main-info">
+                        <span class="header-title">Stock Analysis: TSLA (Example)</span>
+                        <div class="header-dates-row">
+                            <span>Release Date: <b>5 April 2026</b></span>
+                            <span>Last Update: <b>8 April 2026</b></span>
+                        </div>
+                    </div>
+                    <span class="header-status status-hit">Hit Target</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <strong>Technical Summary:</strong>
+                        <p>Double bottom confirmed. Exit strategy was executed at the primary resistance zone.</p>
+                        <img src="https://via.placeholder.com/600x300/e2e8f0/475569?text=Stock+Chart+Example+2" alt="Technical Chart" class="analysis-chart">
+                        <p>Final Gain: +15%. Currently waiting for a new entry signal on the retracement.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="contact-links">
+            <a href="mailto:XXXX.com">📧 XXXX.com</a>
+            
+            <a href="https://wa.me/123456789" target="_blank" style="color: var(--whatsapp);">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" style="width: 16px;">
+                Whatsapp
+            </a>
+
+            <a href="https://www.linkedin.com/in/XXXXXX/" target="_blank">🔗 LinkedIn</a>
+            <span>📍 Indonesia</span>
+        </div>
+        <div style="opacity: 0.6;">&copy; 2026 Rianinsight Portfolio</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
