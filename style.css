@@ -60,7 +60,7 @@ nav {
 
 /* LAYOUT: flex*/
 .main-wrapper {
-    flex: 1; /* This expands to fill empty space, pushing footer to bottom */
+    flex: 1; /* to fill empty space, footer=default*/
     display: grid;
     grid-template-columns: 280px 1fr; 
     max-width: 1400px; 
@@ -180,22 +180,7 @@ nav {
 .status-ongoing { color: #b05d00; }
 .status-hit { color: #10b981; }
 
-#contactDropdown {
-    display: none; 
-    position: absolute; 
-    top: 50px; 
-    right: 0;
-    width: 260px; 
-    background: white; 
-    border: 1px solid #ddd;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-    border-radius: 8px; 
-    padding: 20px; 
-    z-index: 2000; 
-    color: #333;
-}
-
-/* 3. FOOTER: margin-top: auto is the secondary safety net */
+/* 3. FOOTER: margin-top: auto*/
 footer {
     background: white; 
     border-top: 1px solid #e2e8f0;
