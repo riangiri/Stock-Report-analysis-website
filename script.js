@@ -22,11 +22,6 @@ for (let i = 0; i < acc.length; i++) {
     });
 }
 
-function toggleContact() {
-    const dropdown = document.getElementById("contactDropdown");
-    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-}
-
 window.onclick = function(event) {
     if (!event.target.matches('button') && !event.target.closest('#contactDropdown') && !event.target.matches('#stockSearch')) {
         document.getElementById("contactDropdown").style.display = "none";
