@@ -6,11 +6,15 @@
     --whatsapp: #25D366;
 }
 
+/* FLEXBOX SETUP*/
 body { 
     font-family: 'Inter', sans-serif; 
     margin: 0; 
     background: var(--bg); 
     color: var(--text); 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Takes full height of the screen */
 }
 
 /* Navigation */
@@ -54,14 +58,16 @@ nav {
     margin-left: 10px;
 }
 
-/* Layout */
+/* LAYOUT: flex*/
 .main-wrapper {
+    flex: 1; /* This expands to fill empty space, pushing footer to bottom */
     display: grid;
     grid-template-columns: 280px 1fr; 
     max-width: 1400px; 
-    margin: 40px 5% 40px 5%; 
+    margin: 40px auto; /* Centered with auto margin */
     gap: 30px;
-    padding: 0 20px;
+    padding: 0 5%;
+    width: 90%;
 }
 
 .intro-section {
@@ -189,11 +195,12 @@ nav {
     color: #333;
 }
 
+/* 3. FOOTER: margin-top: auto is the secondary safety net */
 footer {
     background: white; 
     border-top: 1px solid #e2e8f0;
     padding: 40px 5%; 
-    margin-top: 60px; 
+    margin-top: auto; /* Pushes itself to the bottom of the flex container */
     text-align: center; 
     font-size: 0.85rem;
 }
