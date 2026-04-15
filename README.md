@@ -1,2 +1,5 @@
 # Stock-Report-analysis-website
-Front end website pribadi yang berisi tentang analisa teknikal saham harian, mingguan, bulanan dan berisi report isu isu global
+Website pribadi yang berisi portofolio analisa teknikal saham harian, mingguan, bulanan serta akan dilengkapi dengan report isu-isu global
+https://rglab.work/
+
+Website masih dalam tahap pengembangan
