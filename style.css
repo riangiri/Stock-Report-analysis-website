@@ -215,3 +215,22 @@ footer a:hover { color: var(--accent); }
     .intro-section { position: relative; top: 0; }
     .header-dates-row { flex-direction: column; gap: 2px; }
 }
+
+/* Zoom out photo Chart */
+.analysis-chart {
+    width: 100%;            /* Menyesuaikan lebar layar */
+    max-width: 800px;       /* Batas lebar maksimal agar gambar tidak pecah */
+    height: auto;           /* Proporsi tetap terjaga */
+    transition: transform 0.3s ease-in-out; /* Durasi animasi halus */
+    display: block;
+    margin: 20px 0;         /* Jarak atas dan bawah */
+    cursor: zoom-in;        /* Kursor berubah jadi simbol plus */
+}
+
+/* cursor zoom out*/
+.analysis-chart:hover {
+    transform: scale(1.1);  /* Memperbesar 10%. Jangan terlalu besar agar tidak keluar layar */
+    position: relative;
+    z-index: 99;            /* Memastikan gambar berada di atas teks saat membesar */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Memberi sedikit bayangan agar terlihat 'mengambang' */
+}
