@@ -218,55 +218,55 @@ footer a:hover { color: var(--accent); }
     .header-dates-row { flex-direction: column; gap: 2px; }
 }
 
-/* --- Bagian 1: Gaya Gambar Kecil di Halaman --- */
+/* --- 1: pic small in page --- */
 .analysis-chart {
-    width: 100%;            /* Melebar sesuai kontainer */
-    max-width: 500px;       /* Ukuran maksimal saat normal, biar tidak kegedean */
-    height: auto;           /* Menjaga proporsi gambar */
-    transition: transform 0.3s ease; /* Efek gerakan halus saat kursor masuk/keluar */
+    width: 100%;            /* wide to fit with container */
+    max-width: 500px;       /* max normal, */
+    height: auto;           /* keep picture proportional */
+    transition: transform 0.3s ease; /* effect slow cursor in/out */
     display: block;
-    margin: 20px auto;      /* Posisi tengah dan jarak atas-bawah */
-    cursor: zoom-in;        /* Kursor berubah jadi tanda plus (+) */
-    border-radius: 8px;     /* Opsional: membuat sudut agak melengkung */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Opsional: bayangan tipis */
+    margin: 20px auto;      /* central-topdown position */
+    cursor: zoom-in;        /* cursor change with (+) */
+    border-radius: 8px;     /* Optional: make little round */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional : little shadow */
 }
 
-/* Efek sedikit membesar saat kursor di atas gambar */
+/* give little effect to zoom */
 .analysis-chart:hover {
-    transform: scale(1.03);  /* Perbesar sangat sedikit (3%) sebagai penanda interaktif */
+    transform: scale(1.05);  /* zoom only (5%) for interactive */
 }
 
 
-/* --- Bagian 2: Gaya Lightbox (Pop-up Zoom) --- */
-/* Wadah lightbox yang menutupi layar (tersembunyi secara default) */
+/* --- Lightbox style (Pop-up Zoom) --- */
+/* lightbox surrounding view (hidden default) */
 .lightbox {
-    display: none;          /* Sembunyikan */
-    position: fixed;        /* Tetap di posisi layar saat di-scroll */
-    z-index: 9999;          /* Pastikan paling depan, menimpa semua elemen */
+    display: none;          /* hide */
+    position: fixed;        /* stay in view */
+    z-index: 9999;          /* all element hit */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.85); /* Latar belakang hitam transparan (85%) */
-    align-items: center;    /* Isi di tengah vertikal */
-    justify-content: center; /* Isi di tengah horizontal */
-    cursor: zoom-out;       /* Kursor berubah jadi tanda minus (-) untuk menutup */
+    background-color: rgba(0,0,0,0.85); /* black background transparent(85%) */
+    align-items: center;    /* fill with vertical*/
+    justify-content: center; /* horizontal */
+    cursor: zoom-out;       /* fill cursor to - toclose */
 }
 
-/* Tampilkan lightbox saat menjadi 'target' (#id-nya dipanggil) */
+/* Lightbox as 'target' (#call for id) */
 .lightbox:target {
-    display: flex;          /* Tampilkan */
+    display: flex;          /* show */
 }
 
-/* Gaya gambar besar di dalam lightbox */
+/* LIGHTBOX BIG PICTURE ZOOM*/
 .lightbox img {
     max-width: 90%;         /* Hampir menutupi layar lebar, tapi ada jarak 10% */
     max-height: 90%;        /* Hampir menutupi layar tinggi, tapi ada jarak 10% */
     border-radius: 8px;
-    box-shadow: 0 0 30px rgba(255,255,255,0.2); /* Bayangan putih agar menonjol */
+    box-shadow: 0 0 30px rgba(255,255,255,0.2); /* white*/
 }
 
-/* Gaya tombol tutup (X) di pojok kanan atas */
+/* X BUTTON TO CLOSE PICTURE*/
 .lightbox-close {
     position: absolute;
     top: 20px;
