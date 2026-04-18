@@ -1,13 +1,3 @@
-/* for mobile config top*/
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
 :root {
     --primary: #0f172a;
     --accent: #2563eb;
