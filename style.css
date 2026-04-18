@@ -222,57 +222,10 @@ footer a {
 
 footer a:hover { color: var(--accent); }
 
-/* --- FINAL RESPONSIVE BLOCK (Bottom of File FOR MOBILE) --- */
 @media (max-width: 950px) {
-    /* Stack the sidebar and main content */
-    .main-wrapper { 
-        grid-template-columns: 1fr; 
-        margin: 20px auto; 
-        width: 100%; 
-        padding: 0 15px; 
-    }
-    
-    .intro-section { 
-        position: relative; 
-        top: 0; 
-        width: 100%; 
-    }
-
-    /* Fix the navigation for mobile */
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .nav-right {
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Stack the date info in the accordion */
-    .header-dates-row { 
-        flex-direction: column; 
-        gap: 2px; 
-    }
-
-    /* Ensure your 4 charts fit perfectly */
-    .analysis-chart {
-        max-width: 100%;
-        margin: 15px auto;
-    }
-}
-
-/* Extra fix for very small phones (under 600px) */
-@media (max-width: 600px) {
-    .lightbox img {
-        max-width: 98%;
-        max-height: 80vh;
-    }
-    
-    .header-title {
-        font-size: 0.95rem; /* Prevents text from overlapping on tiny screens */
-    }
+    .main-wrapper { grid-template-columns: 1fr; margin: 20px auto; width: 100%; }
+    .intro-section { position: relative; top: 0; }
+    .header-dates-row { flex-direction: column; gap: 2px; }
 }
 
 /* --- 1: pic small in page --- */
